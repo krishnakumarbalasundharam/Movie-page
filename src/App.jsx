@@ -2,25 +2,16 @@ import React, { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
 import SearchIcon from "./search.svg";
 import "./App.css";
-import Footer from "./Footer.jsx"
-const API_URL = "http://www.omdbapi.com?apikey=b6003d8a";
+
+const API_URL = `http://www.omdbapi.com?apikey=${import.meta.env.VITE_OMDB_API_KEY}`;
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
-
   const [movies, setMovies] = useState([]);
 
-  const [theme, setTheme] = useState("dark");
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      searchMovies(searchTerm);
-    }
-  };
   useEffect(() => {
-    searchMovies("singam");
+    searchMovies("maari");
   }, []);
-
- 
 
   const searchMovies = async (title) => {
     const response = await fetch(`${API_URL}&s=${title}`);
@@ -31,14 +22,13 @@ const App = () => {
 
   return (
     <div className="app">
-      <h1>Filmiophobia</h1>
+      <h1>FilmioPobia</h1>
 
       <div className="search">
         <input
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Hunt for cinematic gems!"
-          onKeyDown={handleKeyDown}
+          placeholder="Search for movies"
         />
         <img
           src={SearchIcon}
@@ -58,10 +48,6 @@ const App = () => {
           <h2>No movies found</h2>
         </div>
       )}
-      <div>
-     
-    <Footer/>
-      </div>
     </div>
   );
 };
