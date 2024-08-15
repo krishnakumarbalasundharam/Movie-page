@@ -17,7 +17,7 @@ const App = () => {
     }
   };
   useEffect(() => {
-    searchMovies("maari");
+    searchMovies("singam");
   }, []);
 
  
