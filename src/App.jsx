@@ -13,13 +13,19 @@ const App = () => {
     searchMovies("maari");
   }, []);
 
+  const handleKeyPress =(event)=>{
+if(event.key === 'Enter'){
+  searchMovies(searchTerm);
+}
+  }
+
   const searchMovies = async (title) => {
     const response = await fetch(`${API_URL}&s=${title}`);
     const data = await response.json();
 
     setMovies(data.Search);
   };
-
+  
   return (
     <div className="app">
       <h1>FilmioPobia</h1>
@@ -29,6 +35,7 @@ const App = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search for movies"
+         onKeyDown={handleKeyPress}
         />
         <img
           src={SearchIcon}
