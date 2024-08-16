@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
 import SearchIcon from "./search.svg";
+import Footer from "./Footer.jsx"
 import "./App.css";
 
 const API_URL = `https://www.omdbapi.com?apikey=${import.meta.env.VITE_OMDB_API_KEY}`;
@@ -11,7 +12,7 @@ const App = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    searchMovies("maari");
+    searchMovies("captain america");
   }, []);
   console.log(import.meta.env.VITE_OMDB_API_KEY);
 
@@ -57,6 +58,9 @@ if(event.key === 'Enter'){
           <h2>No movies found</h2>
         </div>
       )}
+    <div>
+      <Footer/>
+    </div>
     </div>
   );
 };
