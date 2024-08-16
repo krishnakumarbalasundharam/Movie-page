@@ -5,6 +5,7 @@ import "./App.css";
 
 const API_URL = `http://www.omdbapi.com?apikey=${import.meta.env.VITE_OMDB_API_KEY}`;
 
+
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [movies, setMovies] = useState([]);
@@ -12,6 +13,7 @@ const App = () => {
   useEffect(() => {
     searchMovies("maari");
   }, []);
+  console.log(import.meta.env.VITE_OMDB_API_KEY);
 
   const handleKeyPress =(event)=>{
 if(event.key === 'Enter'){
